@@ -8,7 +8,14 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 
-class PlayingCard(var image: Int, var suit: PlayingCardSuits, var rank: PlayingCardRanks) {
-    lateinit var imageFace :ImageView
+class PlayingCard(var imageFace: Int, var suit: PlayingCardSuits, var rank: PlayingCardRanks) {
+
+    val cardSideBack = (R.drawable.playing_card_backside)
+    var positionX : Int? = null
+    var positionY : Int? = null
+    var rotationAngle : Float? = null
+    var faceUo : Boolean = true
+    var inGallery : Boolean = false
+    var inGame : Boolean = false
 
 }

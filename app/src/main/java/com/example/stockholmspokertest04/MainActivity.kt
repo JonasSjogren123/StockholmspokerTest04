@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    val cardClub2 = PlayingCard(R.drawable.playing_card_club_2, PlayingCardSuits.CLUBS, PlayingCardRanks.TWO)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
