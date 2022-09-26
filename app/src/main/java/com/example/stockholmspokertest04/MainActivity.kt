@@ -13,20 +13,20 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         playingCardDeck.shuffle()
-        println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
-        playingCardDeck.dealCard()
-        println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
-        playingCardDeck.dealCard()
-        println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
-        playingCardDeck.dealCard()
-        println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
-        playingCardDeck.dealCard()
-        println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
-        playingCardDeck.dealCard()
 
 
+        fun dealCards() {
+            for (i in 0 until playingCardDeck.listOfPlayingCardsRandom.size) {
+                println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
+                playingCardDeck.dealCard()
+                if (playingCardDeck.listOfPlayingCardsRandom.size  == 0) {
+                    println("The Deck is empty, the size is: ${(playingCardDeck.listOfPlayingCardsRandom.size)}")
+                }
+            }
+        }
+
+        dealCards()
 
     }
 }
