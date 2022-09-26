@@ -71,9 +71,6 @@ class PlayingCardDeck {
     cardHeart2,cardHeart3,cardHeart4,cardHeart5,cardHeart6,cardHeart7,cardHeart8,cardHeart9,cardHeart10,cardHeartJack,cardHeartQueen,cardHeartKing,cardHeartAce,
         cardSpade2,cardSpade3,cardSpade4,cardSpade5,cardSpade6,cardSpade7,cardSpade8,cardSpade9,cardSpade10,cardSpadeJack,cardSpadeQueen,cardSpadeKing,cardSpadeAce)
 
-    /*
-    shuffle()
-    dealCards()
 
     var listOfPlayingCardsRandom = listOfPlayingCards.toMutableList()
 
@@ -81,12 +78,12 @@ class PlayingCardDeck {
         listOfPlayingCardsRandom.shuffle()
     }
 
-    fun dealCards() {
+    fun dealCard() {
 
         listOfPlayingCardsRandom.removeFirst()
 
     }
-*/
+
 
 
     //var listOfRandomCards = listOfPlayingCards.toMutableList()

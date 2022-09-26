@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 
-class PlayingCard(var imageFace: Int, var suit: PlayingCardSuits, var rank: PlayingCardRanks) {
+class PlayingCard(val imageFace: Int, val suit: PlayingCardSuits, val rank: PlayingCardRanks) {
 
     val cardSideBack = (R.drawable.playing_card_backside)
     var positionX : Int? = null
