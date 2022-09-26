@@ -17,11 +17,18 @@ class MainActivity: AppCompatActivity() {
 
 
         fun dealCards() {
+
+            if (playingCardDeck.listOfPlayingCardsRandom.size == playingCardDeck.listOfPlayingCards.size){
+                println("")
+                println("")
+                println("")
+                println("The Deck is full, there are: ${(playingCardDeck.listOfPlayingCardsRandom.size)} cards.")
+            }
             for (i in 0 until playingCardDeck.listOfPlayingCardsRandom.size) {
                 println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
                 playingCardDeck.dealCard()
                 if (playingCardDeck.listOfPlayingCardsRandom.size  == 0) {
-                    println("The Deck is empty, the size is: ${(playingCardDeck.listOfPlayingCardsRandom.size)}")
+                    println("The Deck is empty, there are: ${(playingCardDeck.listOfPlayingCardsRandom.size)} cards left.")
                 }
             }
         }
