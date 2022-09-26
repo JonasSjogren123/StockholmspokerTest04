@@ -1,13 +1,5 @@
 package com.example.stockholmspokertest04
 
-import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import kotlin.collections.MutableList as MutableList1
-
 class PlayingCardDeck {
 
     val cardClub2 = PlayingCard(R.drawable.playing_card_club_2, PlayingCardSuits.CLUBS, PlayingCardRanks.TWO)
@@ -78,9 +70,25 @@ class PlayingCardDeck {
         listOfPlayingCardsRandom.shuffle()
     }
 
-    fun dealCard() {
+    fun dealCard() /*: PlayingCard */{
 
+        //postitionX, positionY, faceUp..will be set in separate class.
+        //Postitions shall be adapted to relative coordinats to fit into any sized divice.
+        //listOfPlayingCardsRandom.first().faceUo = (true..false).random()
+
+        val dealtCard : PlayingCard = listOfPlayingCardsRandom.first()
+        dealtCard.positionX = (0..400).random()
+        dealtCard.positionY = (0..800).random()
+        dealtCard.rotationAngleInt = (0..360).random()
+        dealtCard.inGame = true
+
+        println("${dealtCard.suit}, ${dealtCard.rank}")
         listOfPlayingCardsRandom.removeFirst()
+
+
+       /* return dealtCard*/
+
+
 
     }
 

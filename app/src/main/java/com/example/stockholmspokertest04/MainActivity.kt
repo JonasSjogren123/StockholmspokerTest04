@@ -13,19 +13,16 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         playingCardDeck.shuffle()
         println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
         playingCardDeck.dealCard()
-        playingCardDeck.shuffle()
         println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
         playingCardDeck.dealCard()
-        playingCardDeck.shuffle()
         println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
         playingCardDeck.dealCard()
-        playingCardDeck.shuffle()
         println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
         playingCardDeck.dealCard()
-        playingCardDeck.shuffle()
         println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
         playingCardDeck.dealCard()
 
