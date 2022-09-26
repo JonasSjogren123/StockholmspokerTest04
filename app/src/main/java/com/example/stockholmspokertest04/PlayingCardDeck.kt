@@ -66,7 +66,7 @@ class PlayingCardDeck {
     val cardSpadeKing = PlayingCard(R.drawable.playing_card_spade_king, PlayingCardSuits.SPADES, PlayingCardRanks.KING)
     val cardSpadeAce = PlayingCard(R.drawable.playing_card_spade_ace, PlayingCardSuits.SPADES, PlayingCardRanks.ACE)
 
-    val listOfPlayingCards = mutableListOf(cardClub2,cardClub3,cardClub4,cardClub5,cardClub6,cardClub7,cardClub8,cardClub9,cardClub10,cardClubJack,cardClubQueen,cardClubKing,cardClubAce,
+    val listOfPlayingCards = mutableListOf<PlayingCard>(cardClub2,cardClub3,cardClub4,cardClub5,cardClub6,cardClub7,cardClub8,cardClub9,cardClub10,cardClubJack,cardClubQueen,cardClubKing,cardClubAce,
         cardDiamond2,cardDiamond3,cardDiamond4,cardDiamond5,cardDiamond6,cardDiamond7,cardDiamond8,cardDiamond9,cardDiamond10,cardDiamondJack,cardDiamondQueen,cardDiamondKing,cardDiamondAce,
     cardHeart2,cardHeart3,cardHeart4,cardHeart5,cardHeart6,cardHeart7,cardHeart8,cardHeart9,cardHeart10,cardHeartJack,cardHeartQueen,cardHeartKing,cardHeartAce,
         cardSpade2,cardSpade3,cardSpade4,cardSpade5,cardSpade6,cardSpade7,cardSpade8,cardSpade9,cardSpade10,cardSpadeJack,cardSpadeQueen,cardSpadeKing,cardSpadeAce)
