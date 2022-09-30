@@ -70,6 +70,8 @@ class PlayingCardDeck {
         listOfPlayingCardsRandom.shuffle()
     }
 
+    var listOfPlayingCardsRemainingInGame = listOfPlayingCardsRandom.toMutableList()
+
     fun dealCard() /*: PlayingCard */{
 
         //postitionX, positionY, faceUp..will be set in separate class.
@@ -81,17 +83,17 @@ class PlayingCardDeck {
         dealtCard.positionY = (0..800).random()
         dealtCard.rotationAngleInt = (0..360).random()
 
-        dealtCard.faceDirection()
-        dealtCard.faceUp
+        //dealtCard.faceDirection()
+        //dealtCard.faceUp
 
-        dealtCard.inGame = true
+        //dealtCard.inGame = true
 
         print("${dealtCard.suit}, ${dealtCard.rank}, ")
         print("X: ${dealtCard.positionX}, Y: ${dealtCard.positionY}, ")
         print("Rotation angle: ${dealtCard.rotationAngleInt}°,")
-        print("In game: ${dealtCard.inGame}, ")
-        print("In gallery: ${dealtCard.inGallery}, ")
-        print("Face Up: ${dealtCard.faceUp}, ")
+        //print("In game: ${dealtCard.inGame}, ")
+        //print("In gallery: ${dealtCard.inGallery}, ")
+        //print("Face Up: ${dealtCard.faceUp}, ")
         println("Image: ${dealtCard.imageFace}°")
         listOfPlayingCardsRandom.removeFirst()
 

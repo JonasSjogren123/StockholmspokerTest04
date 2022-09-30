@@ -10,33 +10,4 @@ class PlayingCard(var imageFace: Int, val suit: PlayingCardSuits, val rank: Play
 
     var rotationAngleInt = 0
     var rotationAngle = rotationAngleInt.toFloat()
-
-    /*
-    var faceUp : Boolean = true
-    var choice = (0..1).random()
-
-    fun faceDirection() {
-        if (choice == 0) {
-        faceUp = false
-        }
-    }
-     */
-
-
-    var inGallery : Boolean = false
-    var inGame : Boolean = false
-
-    /*lateinit var image : Int
-
-    if (faceUp == true) {
-        image = imageFace
-    } else {
-        image = cardSideBack
-    }
-
-     */
-
-    //imageFace.rotation = rotationAngle
-    //cardSideBack.rotation = imageFace.rotation
-
 }
