@@ -6,14 +6,27 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
+import android.content.ClipData
+import android.content.ClipDescription
+import android.graphics.Canvas
+import android.graphics.Point
+import android.os.Build
+import android.view.DragEvent
+import android.view.View
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.ResourcesCompat
+//import com.example.stockholmspokertest04.databinding.ActivityMainBinding
 
 
 class MainActivity: AppCompatActivity() {
 
     val playingCardDeck = PlayingCardDeck()
     lateinit var layout: RelativeLayout
-   // lateinit var button : Button
-    var buttonIsAlreadyPressed : Boolean = false
+
+    // lateinit var button : Button
+    var buttonIsAlreadyPressed: Boolean = false
+    var playingCardFaceUp : Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,32 +55,35 @@ class MainActivity: AppCompatActivity() {
     }
 
 
+    fun dealCards() {
 
-        fun dealCards() {
-
-            if (playingCardDeck.listOfPlayingCardsRandom.size == playingCardDeck.listOfPlayingCards.size){
-                println("")
-                println("")
-                println("")
-                println("The Deck is full, there are: ${(playingCardDeck.listOfPlayingCardsRandom.size)} cards.")
-            }
-            for (i in 0 until playingCardDeck.listOfPlayingCardsRandom.size) {
-                println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
-                playingCardDeck.dealCard()
-                if (playingCardDeck.listOfPlayingCardsRandom.size  == 0) {
-                    println("The Deck is empty, there are: ${(playingCardDeck.listOfPlayingCardsRandom.size)} cards left.")
-                }
+        if (playingCardDeck.listOfPlayingCardsRandom.size == playingCardDeck.listOfPlayingCards.size) {
+            println("")
+            println("")
+            println("")
+            println("The Deck is full, there are: ${(playingCardDeck.listOfPlayingCardsRandom.size)} cards.")
+        }
+        for (i in 0 until playingCardDeck.listOfPlayingCardsRandom.size) {
+            println("Size: ${playingCardDeck.listOfPlayingCardsRandom.size}")
+            playingCardDeck.dealCard()
+            if (playingCardDeck.listOfPlayingCardsRandom.size == 0) {
+                println("The Deck is empty, there are: ${(playingCardDeck.listOfPlayingCardsRandom.size)} cards left.")
             }
         }
+    }
 
-        //dealCards()
-        //dropCardsOntheLayout()
-
+    //dealCards()
+    //dropCardsOntheLayout()
 
 
     fun placeViewStatic(imageView: ImageView) {
         imageView.x = 0f
         imageView.y = 0f
+    }
+
+    fun flipCardSide() {
+        var choice = (0..1).random()
+        playingCardFaceUp = choice == 0
     }
 
     fun dropCardsOntheLayout() {
@@ -79,7 +95,13 @@ class MainActivity: AppCompatActivity() {
         for (playingCard in playingCardDeck.listOfPlayingCardsRandom) {
             val imageView = ImageView(this)
             imageView.layoutParams = LinearLayout.LayoutParams(200, 200)
-            imageView.setImageResource(playingCard.imageFace)
+            flipCardSide()
+            if (playingCardFaceUp == true) {
+                imageView.setImageResource(playingCard.imageFace)
+            } else {
+                imageView.setImageResource(playingCard.cardSideBack)
+            }
+
             placeViewRandomly(imageView)
             rotateViewRandomly(imageView)
             layout?.addView(imageView)

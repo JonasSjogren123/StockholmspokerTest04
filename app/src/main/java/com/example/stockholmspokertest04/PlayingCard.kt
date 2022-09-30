@@ -11,6 +11,7 @@ class PlayingCard(var imageFace: Int, val suit: PlayingCardSuits, val rank: Play
     var rotationAngleInt = 0
     var rotationAngle = rotationAngleInt.toFloat()
 
+    /*
     var faceUp : Boolean = true
     var choice = (0..1).random()
 
@@ -19,6 +20,7 @@ class PlayingCard(var imageFace: Int, val suit: PlayingCardSuits, val rank: Play
         faceUp = false
         }
     }
+     */
 
 
     var inGallery : Boolean = false
@@ -27,7 +29,7 @@ class PlayingCard(var imageFace: Int, val suit: PlayingCardSuits, val rank: Play
     /*lateinit var image : Int
 
     if (faceUp == true) {
-        image = imgageFace
+        image = imageFace
     } else {
         image = cardSideBack
     }
