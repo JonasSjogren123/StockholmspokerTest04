@@ -54,6 +54,7 @@ class MainActivity: AppCompatActivity() {
     }
 
     fun dropCardsOntheLayout() {
+        newGameDecision()
         playingCardDeck.listOfPlayingCardsRemainingInGame = playingCardDeck.listOfPlayingCardsRandom.toMutableList()
         playingCardDeck.listOfPlayingCardsRandom.clear()
            if (buttonIsAlreadyPressed == true) {
@@ -75,6 +76,12 @@ class MainActivity: AppCompatActivity() {
             imageView.tag = playingCard
             }
         buttonIsAlreadyPressed = true
+    }
+
+    fun newGameDecision(){
+        if (playingCardDeck.listOfPlayingCardsRemainingInGame.size == 0){
+            playingCardDeck.listOfPlayingCardsRandom = playingCardDeck.listOfPlayingCards.toMutableList()
+        }
     }
 
 
