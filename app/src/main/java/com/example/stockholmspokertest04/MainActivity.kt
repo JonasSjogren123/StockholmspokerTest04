@@ -27,7 +27,7 @@ class MainActivity: AppCompatActivity() {
 
         val galleryCardSlot = ImageView(this)
         galleryCardSlot.layoutParams = LinearLayout.LayoutParams(300, 300)
-        galleryCardSlot.setImageResource(R.drawable.gallery_playing_card_slot_empty)
+        galleryCardSlot.setImageResource(R.drawable.playing_card_gallery_slot_empty)
 
         layout = findViewById<RelativeLayout>(R.id.layout)
         playingCardDeck.shuffle()

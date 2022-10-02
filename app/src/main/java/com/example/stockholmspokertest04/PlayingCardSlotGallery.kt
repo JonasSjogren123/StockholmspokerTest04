@@ -18,11 +18,11 @@ class PlayingCardSlotGallery {
     */
 
     val PlayingCardSlotsPositionY = 10
-    val playingCardSlotA = PlayingCardSlot(R.drawable.gallery_playing_card_slot_empty)
-    val playingCardSlotB = PlayingCardSlot(R.drawable.gallery_playing_card_slot_empty)
-    val playingCardSlotC = PlayingCardSlot(R.drawable.gallery_playing_card_slot_empty)
-    val playingCardSlotD = PlayingCardSlot(R.drawable.gallery_playing_card_slot_empty)
-    val playingCardSlotE = PlayingCardSlot(R.drawable.gallery_playing_card_slot_empty)
+    val playingCardSlotA = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotB = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotC = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotD = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotE = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
 
     val listOfPlayingCardsInGallery : List<PlayingCardSlot> = listOf(playingCardSlotA, playingCardSlotB, playingCardSlotC, playingCardSlotD,playingCardSlotE)
 

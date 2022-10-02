@@ -2,7 +2,7 @@ package com.example.stockholmspokertest04
 
 class PlayingCardSlot (var imageFrame: Int) {
 
-    val playingCardSlotEmpty = (R.drawable.gallery_playing_card_slot_empty)
+    val playingCardSlotEmpty = (R.drawable.playing_card_gallery_slot_empty)
     var playingCardSlotFull = imageFrame
 
     var positionX : Int? = null
