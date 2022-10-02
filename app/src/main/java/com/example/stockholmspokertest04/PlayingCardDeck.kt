@@ -72,6 +72,7 @@ class PlayingCardDeck {
 
     var listOfPlayingCardsRemainingInGame = listOfPlayingCardsRandom.toMutableList()
 
+/*
     fun dealCard() /*: PlayingCard */{
 
         //postitionX, positionY, faceUp..will be set in separate class.
@@ -102,7 +103,7 @@ class PlayingCardDeck {
 
 
 
-    }
+    }*/
 
 
 

@@ -14,6 +14,7 @@ class MainActivity: AppCompatActivity() {
 
     val playingCardDeck = PlayingCardDeck()
     var listOfPlayingCardsRemainingInGame = playingCardDeck.listOfPlayingCardsRandom.toMutableList()
+    val playingCardSlotGallery = PlayingCardSlotGallery()
     lateinit var layout: RelativeLayout
 
     var buttonIsAlreadyPressed: Boolean = false
@@ -27,25 +28,20 @@ class MainActivity: AppCompatActivity() {
         val galleryCardSlot = ImageView(this)
         galleryCardSlot.layoutParams = LinearLayout.LayoutParams(300, 300)
         galleryCardSlot.setImageResource(R.drawable.gallery_playing_card_slot_empty)
-        placeViewStatic(galleryCardSlot)
 
         layout = findViewById<RelativeLayout>(R.id.layout)
-        layout?.addView(galleryCardSlot)
         playingCardDeck.shuffle()
-        dropCardsOntheLayout()
+        populateCourtWithPlayingCards()
+        populateGalleryWithPlayingCardSlots()
 
         val button = findViewById<Button>(R.id.button1)
         button.setOnClickListener {
-            dropCardsOntheLayout()
+            populateCourtWithPlayingCards()
+            populateGalleryWithPlayingCardSlots()
             playingCardDeck.listOfPlayingCardsRandom.shuffle()
             layout.addView(button)
         }
 
-    }
-
-    fun placeViewStatic(imageView: ImageView) {
-        imageView.x = 0f
-        imageView.y = 0f
     }
 
     fun flipCardSide() {
@@ -53,16 +49,35 @@ class MainActivity: AppCompatActivity() {
         playingCardFaceUp = choice == 0
     }
 
-    fun dropCardsOntheLayout() {
+    fun populateGalleryWithPlayingCardSlots(){
+        var positionX = 40
+        val positionY = 50
+
+        for (playingCardSlot in playingCardSlotGallery.listOfPlayingCardsInGallery) {
+            val imageView = ImageView(this)
+            imageView.layoutParams = LinearLayout.LayoutParams(200, 200)
+            imageView.setImageResource(playingCardSlot.imageFrame)
+            imageView.x = positionX.toFloat()
+            imageView.y = positionY.toFloat()
+            layout?.addView(imageView)
+            imageView.tag = playingCardSlot
+            positionX += 200
+            }
+    }
+
+    fun populateCourtWithPlayingCards() {
         newGameDecision()
         playingCardDeck.listOfPlayingCardsRemainingInGame = playingCardDeck.listOfPlayingCardsRandom.toMutableList()
         playingCardDeck.listOfPlayingCardsRandom.clear()
            if (buttonIsAlreadyPressed == true) {
             layout?.removeAllViewsInLayout()
+            /*for (playingCard in playingCardDeck.listOfPlayingCardsRemainingInGame) {
+                layout?.removeViewInLayout(playingCard)
+            }*/
         }
         for (playingCard in playingCardDeck.listOfPlayingCardsRemainingInGame) {
             val imageView = ImageView(this)
-            imageView.layoutParams = LinearLayout.LayoutParams(200, 200)
+            imageView.layoutParams = LinearLayout.LayoutParams(350, 350)
             flipCardSide()
             if (playingCardFaceUp == true) {
                 imageView.setImageResource(playingCard.imageFace)
@@ -86,9 +101,9 @@ class MainActivity: AppCompatActivity() {
 
 
     fun placeViewRandomly(imageView: ImageView) {
-        var randomIntX = (10..700).random()
+        var randomIntX = (-50..800).random()
         imageView.x = randomIntX.toFloat()
-        var randomIntY = (300..1600).random()
+        var randomIntY = (400..1500).random()
         imageView.y = randomIntY.toFloat()
     }
 

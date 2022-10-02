@@ -1,22 +1,20 @@
 package com.example.stockholmspokertest04
 
-class PlayingCardSlot (var imageView: Int) {
-    /*
+class PlayingCardSlot (var imageFrame: Int) {
+
     val playingCardSlotEmpty = (R.drawable.gallery_playing_card_slot_empty)
-    var playingCardSlotFull = imageView
+    var playingCardSlotFull = imageFrame
 
-    var slotFull : Boolean = false
-    val cardSideBack = (R.drawable.playing_card_backside)
-    imageView.setImageResource(imageView)
+    var positionX : Int? = null
+    var positionY : Int? = null
 
+    val rotationAngleInt = 0
+    val rotationAngle = rotationAngleInt.toFloat()
+    var slotTaken: Boolean = false
 
-
-    fun emptyOrFull() {
-        if (slotFull == true) {
-
-        }else{
+    fun assignImageView(){
+        if (slotTaken == false){
 
         }
-    }*/
-
+    }
 }
