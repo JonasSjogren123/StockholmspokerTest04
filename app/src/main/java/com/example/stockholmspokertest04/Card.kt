@@ -1,8 +1,6 @@
 package com.example.stockholmspokertest04
 
-import android.widget.ImageView
-
-class PlayingCard(var imageFace: Int, val suit: PlayingCardSuits, val rank: PlayingCardRanks) {
+class Card(var imageFace: Int, val suit: CardSuits, val rank: CardRanks) {
 
     val cardSideBack = (R.drawable.playing_card_backside)
     var positionX : Int? = null

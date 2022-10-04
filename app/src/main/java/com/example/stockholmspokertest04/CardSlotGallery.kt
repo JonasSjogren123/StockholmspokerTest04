@@ -1,9 +1,6 @@
 package com.example.stockholmspokertest04
 
-import android.widget.ImageView
-import android.widget.LinearLayout
-
-class PlayingCardSlotGallery {
+class CardSlotGallery {
 
     /*val playingCardSlotEmpty = (R.drawable.gallery_playing_card_slot_empty)
     var playingCardSlotFull = imageView
@@ -18,14 +15,14 @@ class PlayingCardSlotGallery {
     */
 
     val PlayingCardSlotsPositionY = 10
-    val playingCardSlotA = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
-    val playingCardSlotB = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
-    val playingCardSlotC = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
-    val playingCardSlotD = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
-    val playingCardSlotE = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotA = CardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotB = CardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotC = CardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotD = CardSlot(R.drawable.playing_card_gallery_slot_empty)
+    val playingCardSlotE = CardSlot(R.drawable.playing_card_gallery_slot_empty)
 
-    val listOfPlayingCardsInGallery : List<PlayingCardSlot> = listOf(playingCardSlotA, playingCardSlotB, playingCardSlotC, playingCardSlotD,playingCardSlotE)
-    var listOfPlayingCardsInGalleryMutable = mutableListOf<PlayingCardSlot>()
+    val listOfPlayingCardSlotsInGallery : List<CardSlot> = listOf(playingCardSlotA, playingCardSlotB, playingCardSlotC, playingCardSlotD,playingCardSlotE)
+    var listOfPlayingCardsInGalleryMutable = mutableListOf<CardSlot>()
 
     fun populateGalleryWithPlayingCardSlots() {
         playingCardSlotA.positionX = 10

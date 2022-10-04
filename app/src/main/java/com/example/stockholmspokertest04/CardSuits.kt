@@ -1,6 +1,6 @@
 package com.example.stockholmspokertest04
 
-enum class PlayingCardSuits(val suit : Int) {
+enum class CardSuits(val suit : Int) {
     CLUBS(1),
     DIAMONDS(2),
     HEARTS(3),

@@ -1,9 +1,10 @@
 package com.example.stockholmspokertest04
 
-class PlayingCardSlot (var imageFrame: Int) {
+class CardSlot (var cardFaceImage: Int) {
 
+    lateinit var playingCardInSlot : Card
     val playingCardSlotEmpty = (R.drawable.playing_card_gallery_slot_empty)
-    var playingCardSlotFull = imageFrame
+    var playingCardSlotFull = false
 
     var positionX : Int? = null
     var positionY : Int? = null

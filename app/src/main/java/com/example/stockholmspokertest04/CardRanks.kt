@@ -1,6 +1,6 @@
 package com.example.stockholmspokertest04
 
-enum class PlayingCardRanks(val rank : Int) {
+enum class CardRanks(val rank : Int) {
     TWO(2),
     THREE(3),
     FOUR(4),

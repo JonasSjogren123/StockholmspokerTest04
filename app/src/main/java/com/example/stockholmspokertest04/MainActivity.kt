@@ -2,27 +2,23 @@ package com.example.stockholmspokertest04
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.Toast
-
-//import com.example.stockholmspokertest04.databinding.ActivityMainBinding
-
 
 class MainActivity: AppCompatActivity() {
 
-    val playingCardDeck = PlayingCardDeck()
-    var listOfPlayingCardsRemainingInGame = playingCardDeck.listOfPlayingCardsRandom.toMutableList()
-    val playingCardSlotGallery = PlayingCardSlotGallery()
+    val cardDeck = CardDeck()
+    var listOfCardsRemainingInGame = cardDeck.listOfCardsRandom.toMutableList()
+    val cardSlotGallery = CardSlotGallery()
     lateinit var layout: RelativeLayout
 
     var buttonIsAlreadyPressed: Boolean = false
     var playingCardFaceUp : Boolean = true
     var numberOfFilledSlotts = 0
-
+    var listOfPCardsRemaininginGame = cardDeck.listOfCardsRemainingOnCourt.toMutableList()
+    var cardSlotIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,19 +29,12 @@ class MainActivity: AppCompatActivity() {
         galleryCardSlot.setImageResource(R.drawable.playing_card_gallery_slot_empty)
 
         layout = findViewById<RelativeLayout>(R.id.layout)
-        playingCardDeck.shuffle()
+        cardDeck.shuffle()
         populateCourtWithPlayingCards()
         populateGalleryWithPlayingCardSlots()
 
-        /*val button = findViewById<Button>(R.id.button1)
-        button.setOnClickListener {
-            nextRound()
-            //layout.addView(button)
-        }
-         */
-
         layout.setOnClickListener(){
-            if(playingCardDeck.listOfPlayingCardsRemainingInGame.size == 0){
+            if(cardDeck.listOfCardsRemainingOnCourt.size == 0){
                 nextRound()
             }
         }
@@ -54,7 +43,7 @@ class MainActivity: AppCompatActivity() {
     fun nextRound () {
         populateCourtWithPlayingCards()
         populateGalleryWithPlayingCardSlots()
-        playingCardDeck.listOfPlayingCardsRandom.shuffle()
+        cardDeck.listOfCardsRandom.shuffle()
         //if (playingCardDeck.listOfPlayingCardsRemainingInGame.size == 0){}
 
 
@@ -69,10 +58,10 @@ class MainActivity: AppCompatActivity() {
         var positionX = -11
         val positionY = 50
 
-        for (playingCardSlot in playingCardSlotGallery.listOfPlayingCardsInGallery) {
+        for (playingCardSlot in cardSlotGallery.listOfPlayingCardSlotsInGallery) {
             val imageView = ImageView(this)
             imageView.layoutParams = LinearLayout.LayoutParams(250, 250)
-            imageView.setImageResource(playingCardSlot.imageFrame)
+            imageView.setImageResource(playingCardSlot.cardFaceImage)
             imageView.x = positionX.toFloat()
             imageView.y = positionY.toFloat()
             layout?.addView(imageView)
@@ -81,32 +70,50 @@ class MainActivity: AppCompatActivity() {
             }
     }
 
+    fun populateGallerySlotsWithPlayingCards(){
+        /*
+        val imageViewInSlot = ImageView(this)
+        imageViewInSlot.layoutParams = LinearLayout.LayoutParams(250, 250)
+        imageViewInSlot. = playingCardSlotGallery.listOfPlayingCardSlotsInGallery[imageSlotIndex]
+        imageViewInSlot.playingCardSlotFull = true
+        imageViewInSlot.setImageResource(playingCard.imageFace)
+       imageViewInSlot.tag = playingCardInSlot
+         */
+    //playingCardSlotGallery.playingCardSlotA.
+
+    }
+
     fun populateCourtWithPlayingCards() {
         newGameDecision()
-        playingCardDeck.listOfPlayingCardsRemainingInGame = playingCardDeck.listOfPlayingCardsRandom.toMutableList()
-        playingCardDeck.listOfPlayingCardsRandom.clear()
+        cardDeck.listOfCardsRemainingOnCourt = cardDeck.listOfCardsRandom.toMutableList()
+        cardDeck.listOfCardsRandom.clear()
            if (buttonIsAlreadyPressed == true) {
             layout?.removeAllViewsInLayout()
-            /*for (playingCard in playingCardDeck.listOfPlayingCardsRemainingInGame) {
-                layout?.removeViewInLayout(playingCard)
-            }*/
         }
-        for (playingCard in playingCardDeck.listOfPlayingCardsRemainingInGame) {
+        for (playingCard in cardDeck.listOfCardsRemainingOnCourt) {
             val imageView = ImageView(this)
 
             imageView.layoutParams = LinearLayout.LayoutParams(350, 350)
             imageView.setOnClickListener{
-                val card = imageView.tag as? PlayingCard
+                val card = imageView.tag as? Card
                 Log.d("!!!!!!!!!!!!!!!!","Card clicked! ${card?.suit}, ${card?.rank} ")
-
                 //playingCardSlotGallery.listOfPlayingCardsInGallery
                 setNumberOfFilledSlots()
                 Log.d("! ! ! ! ! ! ! ! ! ! ! !","numberOfFilledSlotts: ${numberOfFilledSlotts}")
+                populateGallerySlotsWithPlayingCards()
+                //cardSlotGallery.get(cardSlotIndex).cardFaceImage = (playingCard.imageFace)
+                //cardSlotGallery.listOfPlayingCardSlotsInGallery[cardSlotIndex].cardFaceImage.setImageResource(playingCard.imageFace)
+                cardSlotGallery.playingCardSlotA.cardFaceImage = playingCard.imageFace
+                listOfCardsRemainingInGame.remove(playingCard)
+                if (cardSlotIndex < 4){
+                    cardSlotIndex ++
+                }
+
             }
             flipCardSide()
             if (playingCardFaceUp == true) {
                 imageView.setImageResource(playingCard.imageFace)
-                playingCardDeck.listOfPlayingCardsRandom.add(playingCard)
+                cardDeck.listOfCardsRandom.add(playingCard)
             } else {
                 imageView.setImageResource(playingCard.cardSideBack)
             }
@@ -120,7 +127,7 @@ class MainActivity: AppCompatActivity() {
 
     fun setNumberOfFilledSlots(){
 
-        if (numberOfFilledSlotts >= playingCardSlotGallery.listOfPlayingCardsInGallery.size){
+        if (numberOfFilledSlotts >= cardSlotGallery.listOfPlayingCardSlotsInGallery.size){
             numberOfFilledSlotts = 5
             nextRound()
         } else {
@@ -130,8 +137,8 @@ class MainActivity: AppCompatActivity() {
     }
 
     fun newGameDecision(){
-        if (playingCardDeck.listOfPlayingCardsRemainingInGame.size == 0){
-            playingCardDeck.listOfPlayingCardsRandom = playingCardDeck.listOfPlayingCards.toMutableList()
+        if (cardDeck.listOfCardsRemainingOnCourt.size == 0){
+            cardDeck.listOfCardsRandom = cardDeck.listOfCards.toMutableList()
         }
     }
 
@@ -139,7 +146,7 @@ class MainActivity: AppCompatActivity() {
     fun placeViewRandomly(imageView: ImageView) {
         var randomIntX = (-50..800).random()
         imageView.x = randomIntX.toFloat()
-        var randomIntY = (400..1500).random()
+        var randomIntY = (400..1600).random()
         imageView.y = randomIntY.toFloat()
     }
 
