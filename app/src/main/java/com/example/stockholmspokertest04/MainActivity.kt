@@ -1,11 +1,13 @@
 package com.example.stockholmspokertest04
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 
 //import com.example.stockholmspokertest04.databinding.ActivityMainBinding
 
@@ -50,18 +52,18 @@ class MainActivity: AppCompatActivity() {
     }
 
     fun populateGalleryWithPlayingCardSlots(){
-        var positionX = 40
+        var positionX = -11
         val positionY = 50
 
         for (playingCardSlot in playingCardSlotGallery.listOfPlayingCardsInGallery) {
             val imageView = ImageView(this)
-            imageView.layoutParams = LinearLayout.LayoutParams(200, 200)
+            imageView.layoutParams = LinearLayout.LayoutParams(250, 250)
             imageView.setImageResource(playingCardSlot.imageFrame)
             imageView.x = positionX.toFloat()
             imageView.y = positionY.toFloat()
             layout?.addView(imageView)
             imageView.tag = playingCardSlot
-            positionX += 200
+            positionX += 213
             }
     }
 
@@ -81,6 +83,13 @@ class MainActivity: AppCompatActivity() {
             flipCardSide()
             if (playingCardFaceUp == true) {
                 imageView.setImageResource(playingCard.imageFace)
+                imageView.setOnClickListener{
+                    val card = imageView.tag as? PlayingCard
+                    Log.d("!!!!!!!!!!!!!!!!","Card clicked! ${card?.suit}, ${card?.rank} ")
+
+                    Toast.makeText(this,"clicked",Toast.LENGTH_SHORT).show()
+                    //playingCardSlotGallery.listOfPlayingCardsInGallery
+                }
                 playingCardDeck.listOfPlayingCardsRandom.add(playingCard)
             } else {
                 imageView.setImageResource(playingCard.cardSideBack)
@@ -89,7 +98,7 @@ class MainActivity: AppCompatActivity() {
             rotateViewRandomly(imageView)
             layout?.addView(imageView)
             imageView.tag = playingCard
-            }
+        }
         buttonIsAlreadyPressed = true
     }
 
