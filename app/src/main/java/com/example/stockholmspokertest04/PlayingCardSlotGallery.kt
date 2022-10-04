@@ -25,6 +25,7 @@ class PlayingCardSlotGallery {
     val playingCardSlotE = PlayingCardSlot(R.drawable.playing_card_gallery_slot_empty)
 
     val listOfPlayingCardsInGallery : List<PlayingCardSlot> = listOf(playingCardSlotA, playingCardSlotB, playingCardSlotC, playingCardSlotD,playingCardSlotE)
+    var listOfPlayingCardsInGalleryMutable = mutableListOf<PlayingCardSlot>()
 
     fun populateGalleryWithPlayingCardSlots() {
         playingCardSlotA.positionX = 10

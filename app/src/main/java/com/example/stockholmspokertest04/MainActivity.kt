@@ -21,6 +21,7 @@ class MainActivity: AppCompatActivity() {
 
     var buttonIsAlreadyPressed: Boolean = false
     var playingCardFaceUp : Boolean = true
+    var numberOfFilledSlotts = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,13 +37,26 @@ class MainActivity: AppCompatActivity() {
         populateCourtWithPlayingCards()
         populateGalleryWithPlayingCardSlots()
 
-        val button = findViewById<Button>(R.id.button1)
+        /*val button = findViewById<Button>(R.id.button1)
         button.setOnClickListener {
-            populateCourtWithPlayingCards()
-            populateGalleryWithPlayingCardSlots()
-            playingCardDeck.listOfPlayingCardsRandom.shuffle()
-            layout.addView(button)
+            nextRound()
+            //layout.addView(button)
         }
+         */
+
+        layout.setOnClickListener(){
+            if(playingCardDeck.listOfPlayingCardsRemainingInGame.size == 0){
+                nextRound()
+            }
+        }
+    }
+
+    fun nextRound () {
+        populateCourtWithPlayingCards()
+        populateGalleryWithPlayingCardSlots()
+        playingCardDeck.listOfPlayingCardsRandom.shuffle()
+        //if (playingCardDeck.listOfPlayingCardsRemainingInGame.size == 0){}
+
 
     }
 
@@ -79,17 +93,19 @@ class MainActivity: AppCompatActivity() {
         }
         for (playingCard in playingCardDeck.listOfPlayingCardsRemainingInGame) {
             val imageView = ImageView(this)
+
             imageView.layoutParams = LinearLayout.LayoutParams(350, 350)
+            imageView.setOnClickListener{
+                val card = imageView.tag as? PlayingCard
+                Log.d("!!!!!!!!!!!!!!!!","Card clicked! ${card?.suit}, ${card?.rank} ")
+
+                //playingCardSlotGallery.listOfPlayingCardsInGallery
+                setNumberOfFilledSlots()
+                Log.d("! ! ! ! ! ! ! ! ! ! ! !","numberOfFilledSlotts: ${numberOfFilledSlotts}")
+            }
             flipCardSide()
             if (playingCardFaceUp == true) {
                 imageView.setImageResource(playingCard.imageFace)
-                imageView.setOnClickListener{
-                    val card = imageView.tag as? PlayingCard
-                    Log.d("!!!!!!!!!!!!!!!!","Card clicked! ${card?.suit}, ${card?.rank} ")
-
-                    Toast.makeText(this,"clicked",Toast.LENGTH_SHORT).show()
-                    //playingCardSlotGallery.listOfPlayingCardsInGallery
-                }
                 playingCardDeck.listOfPlayingCardsRandom.add(playingCard)
             } else {
                 imageView.setImageResource(playingCard.cardSideBack)
@@ -100,6 +116,17 @@ class MainActivity: AppCompatActivity() {
             imageView.tag = playingCard
         }
         buttonIsAlreadyPressed = true
+    }
+
+    fun setNumberOfFilledSlots(){
+
+        if (numberOfFilledSlotts >= playingCardSlotGallery.listOfPlayingCardsInGallery.size){
+            numberOfFilledSlotts = 5
+            nextRound()
+        } else {
+            numberOfFilledSlotts += 1
+        }
+
     }
 
     fun newGameDecision(){
