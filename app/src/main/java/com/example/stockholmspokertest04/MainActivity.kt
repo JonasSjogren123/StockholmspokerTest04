@@ -101,9 +101,7 @@ class MainActivity: AppCompatActivity() {
                 setNumberOfFilledSlots()
                 Log.d("! ! ! ! ! ! ! ! ! ! ! !","numberOfFilledSlotts: ${numberOfFilledSlotts}")
                 populateGallerySlotsWithPlayingCards()
-                //cardSlotGallery.get(cardSlotIndex).cardFaceImage = (playingCard.imageFace)
-                //cardSlotGallery.listOfPlayingCardSlotsInGallery[cardSlotIndex].cardFaceImage.setImageResource(playingCard.imageFace)
-                cardSlotGallery.playingCardSlotA.cardFaceImage = playingCard.imageFace
+                cardSlotGallery.listOfPlayingCardSlotsInGallery[cardSlotIndex].cardFaceImage = (playingCard.imageFace)
                 listOfCardsRemainingInGame.remove(playingCard)
                 if (cardSlotIndex < 4){
                     cardSlotIndex ++
