@@ -21,7 +21,7 @@ class CardSlotGallery {
     val playingCardSlotD = CardSlot(R.drawable.playing_card_gallery_slot_empty)
     val playingCardSlotE = CardSlot(R.drawable.playing_card_gallery_slot_empty)
 
-    val listOfPlayingCardSlotsInGallery : List<CardSlot> = listOf(playingCardSlotA, playingCardSlotB, playingCardSlotC, playingCardSlotD,playingCardSlotE)
+    val listOfCardSlotsInGallery : List<CardSlot> = listOf(playingCardSlotA, playingCardSlotB, playingCardSlotC, playingCardSlotD,playingCardSlotE)
     var listOfPlayingCardsInGalleryMutable = mutableListOf<CardSlot>()
 
     fun populateGalleryWithPlayingCardSlots() {
