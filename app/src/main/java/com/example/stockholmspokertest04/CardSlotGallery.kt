@@ -1,5 +1,7 @@
 package com.example.stockholmspokertest04
 
+import kotlin.collections.List as List1
+
 class CardSlotGallery {
 
     /*val playingCardSlotEmpty = (R.drawable.gallery_playing_card_slot_empty)
@@ -21,8 +23,8 @@ class CardSlotGallery {
     val playingCardSlotD = CardSlot(R.drawable.playing_card_gallery_slot_empty)
     val playingCardSlotE = CardSlot(R.drawable.playing_card_gallery_slot_empty)
 
-    val listOfCardSlotsInGallery : List<CardSlot> = listOf(playingCardSlotA, playingCardSlotB, playingCardSlotC, playingCardSlotD,playingCardSlotE)
-    var listOfPlayingCardsInGalleryMutable = mutableListOf<CardSlot>()
+    /*private*/ val listOfCardSlotsInGallery : List1<CardSlot> = listOf(playingCardSlotA, playingCardSlotB, playingCardSlotC, playingCardSlotD,playingCardSlotE)
+    //var listOfPlayingCardsInGalleryMutable = mutableListOf<CardSlot>()
 
     fun populateGalleryWithPlayingCardSlots() {
         playingCardSlotA.positionX = 10
@@ -36,5 +38,21 @@ class CardSlotGallery {
         playingCardSlotD.positionY = PlayingCardSlotsPositionY
         playingCardSlotE.positionY = PlayingCardSlotsPositionY
     }
+
+    /*fun addCardToSlot(card : Card) : Boolean {
+
+        for (slot in listOfCardSlotsInGallery) {
+            if (slot.isCardSlotEmpty) {
+                slot.cardInSlot = card
+                slot.isCardSlotEmpty = false
+                return true
+            }
+        }
+        return false
+    }
+
+    fun getListOfCardSlotsInGallery() : List1 {
+        return listOfCardSlotsInGallery
+    }*/
 
 }

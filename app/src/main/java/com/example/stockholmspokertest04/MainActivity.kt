@@ -73,15 +73,18 @@ class MainActivity: AppCompatActivity() {
                // layout?.addView(cardSlot.cardSlotImageEmpty)
                 cardSlot.isCardSlotEmpty = true
                 numberOfFilledSlotts -= 1
+
             }
             if (cardSlot.isCardSlotEmpty == true){
                 imageView.setImageResource(cardSlot.cardFaceImage)
             } else {
                 imageView.setImageResource(cardSlot.cardSlotImageEmpty)
+                cardSlot.isCardSlotEmpty = false
             }
             imageView.x = positionX.toFloat()
             imageView.y = positionY.toFloat()
             layout?.addView(imageView)
+            /*if (cardSlot.isCardSlotEmpty){layout?.addView(imageView)}*/
             imageView.tag = cardSlot
             positionX += 213
             }
@@ -103,18 +106,24 @@ class MainActivity: AppCompatActivity() {
                 cardToGallerySlot = (imageView.tag as? Card)!!
                 Log.d("!!!!!!!!!!!!!!!!","Card clicked! ${cardToGallerySlot?.suit}, ${cardToGallerySlot?.rank} ")
                 //playingCardSlotGallery.listOfPlayingCardsInGallery
-                setNumberOfFilledSlots()
+                //setNumberOfFilledSlots()
                 Log.d("! ! ! ! ! ! ! ! ! ! ! !","numberOfFilledSlotts: ${numberOfFilledSlotts}")
 
                 for (i in 0..cardSlotGallery.listOfCardSlotsInGallery.size -1){
                     if (cardToGallerySlot != null) {
                         if (cardSlotGallery.listOfCardSlotsInGallery[cardSlotIndex].isCardSlotEmpty == true){
                     cardSlotGallery.listOfCardSlotsInGallery[cardSlotIndex].cardFaceImage = (cardToGallerySlot.imageFace)
+                            populateGalleryWithCardSlots()
+                            cardSlotGallery.listOfCardSlotsInGallery[cardSlotIndex].isCardSlotEmpty == false
                         }else{
-                        cardSlotIndex ++
+                        cardSlotIndex += 1
+                            if (cardSlotIndex >= 5){cardSlotIndex = 1}
                         cardSlotGallery.listOfCardSlotsInGallery[cardSlotIndex].cardFaceImage = (cardToGallerySlot.imageFace)
                             cardSlotGallery.listOfCardSlotsInGallery[cardSlotIndex].isCardSlotEmpty = false
+                            Log.d("! ! ! ! ! ! ! ! ! ! ! !","cardSlotIndex: ${cardSlotIndex}")
+                            populateGalleryWithCardSlots()
                         }
+                        Log.d("! ! ! ! ! ! ! ! ! ! ! !","cardSlotIndex: ${cardSlotIndex}")
                     }
                     layout?.removeView(imageView)
                 }
@@ -150,7 +159,7 @@ class MainActivity: AppCompatActivity() {
         } else {
             numberOfFilledSlotts += 1
         }
-        layout.background.alpha = 255/5 * numberOfFilledSlotts
+        //layout.background.alpha = 255/5 * numberOfFilledSlotts
     }
 
     fun newGameDecision(){
@@ -186,5 +195,23 @@ class MainActivity: AppCompatActivity() {
             layout.background = resources.getDrawable(R.drawable.background_2)
         }
     }
+
+   /*fun nextCardSlotIndex(cardSlot:CardSlot){
+        if(cardSlot.isCardSlotEmpty == false){
+            if (cardSlotIndex >= 4) {cardSlotIndex = 0
+            }else {
+                if (cardSlotIndex < 0){
+                    card
+
+                    }
+            }
+
+            cardSlotIndex ++
+        }
+        {
+
+        }
+    }
+    */
 
 }

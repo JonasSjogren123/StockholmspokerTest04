@@ -2,7 +2,7 @@ package com.example.stockholmspokertest04
 
 class CardSlot (var cardFaceImage: Int) {
 
-    lateinit var cardInSlot : Card
+    var cardInSlot : Card? = null
     val cardSlotImageEmpty = (R.drawable.playing_card_gallery_slot_empty)
 
     var positionX : Int? = null
@@ -17,5 +17,11 @@ class CardSlot (var cardFaceImage: Int) {
             cardFaceImage = (R.drawable.playing_card_gallery_slot_empty)
         }
     }
+
+    fun removeCardFromSlot() {
+        cardInSlot = null
+        isCardSlotEmpty = true
+    }
+
 
 }
